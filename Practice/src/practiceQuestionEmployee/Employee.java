@@ -1,5 +1,7 @@
 package practiceQuestionEmployee;
+
 import java.text.NumberFormat;
+
 public class Employee {
 	private int empId;
 	private String name;
@@ -16,10 +18,23 @@ public class Employee {
 	}
 
 	// ==========Tried without parameterized constructor====================
-		//	Employee() {
-		//
-		//	}
+	// Employee() {
+	//
+	// }
 	// =========Done Successfully===========================================
+
+	// =========Creating Method for NumberFormat for code reuse.============
+	public String formatCurrency(double amount) {
+
+		// Method 1:
+		return NumberFormat.getCurrencyInstance().format(amount);
+		/*
+		 * Method 2: NumberFormat currentFormat = NumberFormat.getCurrencyInstance();
+		 * String formattedCurrency = currentFormat.format(amount);
+		 */
+		/* return formattedCurrency; */
+
+	}
 
 	// Name setter
 	public void setName(String name) {
@@ -28,20 +43,18 @@ public class Employee {
 
 	// Salary Before Raised
 	public void salaryBeforeRaised() {
-		NumberFormat cf = NumberFormat.getCurrencyInstance();
-		String sal = cf.format(salary);
-		System.out.println("Previous salary : " + sal);
+//============Need not to use these lines after creating a method for this.============
+//		NumberFormat cf = NumberFormat.getCurrencyInstance();
+//		String sal = cf.format(salary);
+		System.out.println("Previous salary : " + formatCurrency(salary));
 	}
 
 	// Raise Salary Method
 	public void raisedSalary(double increase) {
-		NumberFormat cf = NumberFormat.getCurrencyInstance();
-		String sal = cf.format(salary);
-		String increasedSal = cf.format(increased_salary);
 		increased_salary = increase;
 		salary += increase;
-		System.out.println("Raised Salary: " + increasedSal);
-		System.out.println("Total Salary After Raised : " + sal);
+		System.out.println("Raised Salary: " + formatCurrency(increased_salary));
+		System.out.println("Total Salary After Raised : " + formatCurrency(salary));
 
 	}
 
@@ -63,11 +76,9 @@ public class Employee {
 	}
 
 	public void printEmployee() {
-		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-		String formattedSalary = currencyFormat.format(getSalary());
 		System.out.println("Employee ID: " + getEmpId());
 		System.out.println("Name: " + getName());
 		System.out.println("SSN: " + getSsn());
-		System.out.println("Salary: " + formattedSalary);
+		System.out.println("Salary: " + formatCurrency(getSalary()));
 	}
 }
