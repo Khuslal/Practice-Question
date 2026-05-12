@@ -1,5 +1,5 @@
 package practiceQuestionEmployee;
-
+import java.text.NumberFormat;
 public class Employee {
 	private int empId;
 	private String name;
@@ -28,15 +28,20 @@ public class Employee {
 
 	// Salary Before Raised
 	public void salaryBeforeRaised() {
-		System.out.println("Previous salary : " + salary);
+		NumberFormat cf = NumberFormat.getCurrencyInstance();
+		String sal = cf.format(salary);
+		System.out.println("Previous salary : " + sal);
 	}
 
 	// Raise Salary Method
 	public void raisedSalary(double increase) {
+		NumberFormat cf = NumberFormat.getCurrencyInstance();
+		String sal = cf.format(salary);
+		String increasedSal = cf.format(increased_salary);
 		increased_salary = increase;
 		salary += increase;
-		System.out.println("Raised Salary: " + increased_salary);
-		System.out.println("Total Salary After Raised : " + salary);
+		System.out.println("Raised Salary: " + increasedSal);
+		System.out.println("Total Salary After Raised : " + sal);
 
 	}
 
@@ -58,9 +63,11 @@ public class Employee {
 	}
 
 	public void printEmployee() {
-		System.out.println("Employee ID: " + empId);
-		System.out.println("Name: " + name);
-		System.out.println("SSN: " + ssn);
-		System.out.println("Salary: " + salary);
+		NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+		String formattedSalary = currencyFormat.format(getSalary());
+		System.out.println("Employee ID: " + getEmpId());
+		System.out.println("Name: " + getName());
+		System.out.println("SSN: " + getSsn());
+		System.out.println("Salary: " + formattedSalary);
 	}
 }
