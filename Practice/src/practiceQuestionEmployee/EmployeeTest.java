@@ -19,7 +19,7 @@ public class EmployeeTest {
 
 		// Checking Increased salary for Engineer
 		egr.salaryBeforeRaised();
-		egr.raisedSalary(5000);
+		egr.raisedSalary(-5000);
 		System.out.println();
 
 		// Calling the printEmployee() method using object of the related class

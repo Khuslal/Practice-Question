@@ -25,7 +25,6 @@ public class Employee {
 
 	// =========Creating Method for NumberFormat for code reuse.============
 	public String formatCurrency(double amount) {
-
 		// Method 1:
 		return NumberFormat.getCurrencyInstance().format(amount);
 		/*
@@ -46,15 +45,20 @@ public class Employee {
 //============Need not to use these lines after creating a method for this.============
 //		NumberFormat cf = NumberFormat.getCurrencyInstance();
 //		String sal = cf.format(salary);
+//		System.out.println("Previous salary : " + sal);
 		System.out.println("Previous salary : " + formatCurrency(salary));
 	}
 
 	// Raise Salary Method
 	public void raisedSalary(double increase) {
-		increased_salary = increase;
-		salary += increase;
-		System.out.println("Raised Salary: " + formatCurrency(increased_salary));
-		System.out.println("Total Salary After Raised : " + formatCurrency(salary));
+		if (increase <= 0) {
+			System.out.println("Salary increasing cannot be negative !");
+		} else {
+			increased_salary = increase;
+			salary += increase;
+			System.out.println("Raised Salary: " + formatCurrency(increased_salary));
+			System.out.println("Total Salary After Raised : " + formatCurrency(salary));
+		}
 
 	}
 
